@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -52,6 +54,18 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
+        //Creating the layoutInflater instance
+        LayoutInflater li= getLayoutInflater();
+        //Getting the view object as defined in the customtoast.xml file
+        View layout = li.inflate(R.layout.custom_toast,(ViewGroup)
+        findViewById(R.id.custom_toast_layout));
+
+        //Creating the toast object
+        Toast toast1 = new Toast(getApplicationContext());
+        toast1.setDuration(Toast.LENGTH_LONG);
+        toast1.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        toast1.setView(layout);//setting the view of custom layout
+        toast1.show();
 
     }
 }
